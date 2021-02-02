@@ -1,0 +1,16 @@
+.folder {
+    background-color: white;
+    display: block;
+    margin: 0 0 8px auto;
+    max-width: 180px;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.folder.active {
+    background-color: lightblue
+}
+
+.addFolder {
+    margin: 0 0 8px auto;
+}
