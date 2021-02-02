@@ -9,14 +9,14 @@ import Folder from './Folder'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      store: store
+    state = {
+      notes: store.notes,
+      folders: store.folders
     }
-  }
+  
   
   render() {
+    const { notes, folders } = this.state
     return (
       <div className='App'>
         <header>
@@ -27,30 +27,30 @@ class App extends Component {
         <section className='container'>
           <nav className='nav'>
             <Route exact path='/' render={() => 
-              <Folders folders={this.state.store.folders}/>}
+              <Folders folders={folders}/>}
             />
             <Route path='/folder/:folderId' render={() => 
-              <Folders folders={this.state.store.folders}/>}//need to highlight the chosen folder
+              <Folders folders={folders}/>}//need to highlight the chosen folder
             />
             <Route path='/note/:noteId' render={(routeProps) => {
               const noteId = routeProps.match.params.noteId;
-              const note = this.state.store.notes.find(note => note.id === noteId);
-              const folder = this.state.store.folders.find(folder => folder.id===note.folderId);
+              const note = notes.find(note => note.id === noteId);
+              const folder = folders.find(folder => folder.id===note.folderId);
               return <Folder folder={folder} onClickBack={() => {routeProps.history.goBack('/')}}
               />}}
             />
           </nav>
           <main className='main'>
             <Route exact path='/' render={() => 
-              <Notes notes={this.state.store.notes}/>}
+              <Notes notes={notes}/>}
             />
             <Route path='/folder/:folderId' render={(routeProps) => {
               const folderId = routeProps.match.params.folderId//help me understand where this comes from
-              return (<Notes notes={this.state.store.notes.filter(note => note.folderId === folderId)}/>)}}
+              return (<Notes notes={notes.filter(note => note.folderId === folderId)}/>)}}
             />
             <Route path='/note/:noteId' render={(routeProps) => {
               const noteId = routeProps.match.params.noteId
-              return (<NotePage note={this.state.store.notes.find(note => note.id === noteId)}/>)}}
+              return (<NotePage note={notes.find(note => note.id === noteId)}/>)}}
             />
           </main>
         </section>
