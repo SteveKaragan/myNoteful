@@ -1,62 +1,72 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css'
-import store from './store'
 import Notes from './Notes'
 import Folders from './Folders'
 import NotePage from './notePage'
 import Folder from './Folder'
-import dataContext from './dataContext'
+import DataContext from './dataContext'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      notes: store.notes,
-      folders: store.folders
+    state = {
+      notes: [],
+      folders: []
     }
+  
+  handleDeleteNote = noteId => {
+    this.setState({
+        notes: this.state.notes.filter(note => note.id !== noteId)
+    });
+  };
+  
+  componentDidMount() {
+    Promise.all(
+      [fetch('http://localhost:9090/notes'), fetch('http://localhost:9090/folders')]
+    )
+      .then(([notesData, foldersData]) => {
+        if (!notesData.ok)
+          return notesData.json().then(e => Promise.reject(e));
+        if (!foldersData.ok)
+          return foldersData.json().then(e => Promise.reject(e));
+        
+        return Promise.all([notesData.json(), foldersData.json()]);
+      })
+      .then(([notes, folders]) => {
+        this.setState({notes, folders});
+      })
+      .catch(error => {
+        console.log({error})
+      })
   }
   
   render() {
-    const { notes, folders } =this.state
+    const contextValue = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.handleDeleteNote
+    }
     return (
       <div className='App'>
-        <header>
-          <Link to='/'>
-            <h1>Noteful</h1>
-          </Link>
-        </header>
-        <section className='container'>
-          <nav className='nav'>
-            <Route exact path='/' render={() => 
-              <Folders folders={folders}/>}
-            />
-            <Route path='/folder/:folderId' render={() => 
-              <Folders folders={folders}/>}//need to highlight the chosen folder
-            />
-            <Route path='/note/:noteId' render={(routeProps) => {
-              const noteId = routeProps.match.params.noteId;
-              const note = notes.find(note => note.id === noteId);
-              const folder = folders.find(folder => folder.id===note.folderId);
-              return <Folder folder={folder} onClickBack={() => {routeProps.history.goBack('/')}}
-              />}}
-            />
-          </nav>
-          <main className='main'>
-            <Route exact path='/' render={() => 
-              <Notes notes={notes}/>}
-            />
-            <Route path='/folder/:folderId' render={(routeProps) => {
-              const folderId = routeProps.match.params.folderId//help me understand where this comes from
-              return (<Notes notes={notes.filter(note => note.folderId === folderId)}/>)}}
-            />
-            <Route path='/note/:noteId' render={(routeProps) => {
-              const noteId = routeProps.match.params.noteId
-              return (<NotePage note={notes.find(note => note.id === noteId)}/>)}}
-            />
-          </main>
-        </section>
+        <DataContext.Provider value={contextValue}>
+          <header>
+            <Link to='/'>
+              <h1>Noteful</h1>
+            </Link>
+          </header>
+          <section className='container'>
+            <nav className='nav'>
+              <Route exact path='/' component={Folders}/>
+              <Route path='/folder/:folderId' component={Folders}/>
+              <Route path='/note/:noteId' component={Folder}/>
+            </nav>
+            <main className='main'>
+              <Route exact path='/' component={Notes}/>
+              <Route path='/folder/:folderId' component={Notes}/>
+              <Route path='/note/:noteId' component={NotePage}/>
+            </main>
+          </section>
+        </DataContext.Provider>
       </div>
     );
   }

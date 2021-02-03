@@ -1,9 +1,9 @@
 import React from 'react'
 
-const dataContext = React.createContext({
+const DataContext = React.createContext({
   notes: [],
   folders: [],
   deleteNote: () => {},
 })
 
-export default dataContext
+export default DataContext
