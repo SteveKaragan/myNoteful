@@ -9,7 +9,7 @@ export default class Notes extends Component {
         match: {
           params: {}
         }
-      }//Discuss with Mentor
+      }
     static contextType = DataContext;
   
     render() {

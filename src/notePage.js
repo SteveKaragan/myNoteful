@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './notePage.css'
 import DataContext from './dataContext'
 import Note from './Note'
-import { format, parseISO } from 'date-fns'
+
 
 
 export default class NotePage extends Component {
@@ -19,18 +19,20 @@ export default class NotePage extends Component {
 
     render() {
         const noteId = this.props.match.params.noteId
-        const { notes=[] } = this.context
-        const note = notes.find(note => note.id === noteId) || { content: ''}
-        // const date = parseISO(note.modified)
+        const { notes=[] } = this.context //the =[] is if no notes returned?
+        const note = notes.find(note => note.id === noteId) || { content: ''} //the || is incase nothing returned?
         return(
             <div className='pageNote'>
                 <div className='noteBox'>
-                    <Note 
-                        id={note.id}
-                        name={note.name}
-                        modDate={note.modified}
-                        onDeleteNote={this.handleDeleteNote}
-                    />
+                    {
+                        note.content === '' ? '' : 
+                        <Note 
+                            id={note.id}
+                            name={note.name}
+                            modDate={note.modified}
+                            onDeleteNote={this.handleDeleteNote}
+                        />
+                    }
                 </div>
                 <p>{note.content}</p>
             </div>

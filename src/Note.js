@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DataContext from './dataContext'
 import { Link } from 'react-router-dom'
-//import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import './Note.css'
 
 
@@ -15,7 +15,7 @@ export default class Note extends Component  {
       static contextType = DataContext;
     
     handleClickDelete = (e) => {
-        e.preventDefault()
+        e.preventDefault()//Do I need to prevent default?  Not a submit.
         const noteId = this.props.id
         
         fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -27,12 +27,11 @@ export default class Note extends Component  {
         .then(res => {
             if (!res.ok)
             return res.json().then(e => Promise.reject(e))
-            return res.json()
+            return res.json()//we don't do anything with this, right?
         })
         .then(() => {
-            this.context.deleteNote(noteId)
-            // allow parent to perform extra behaviour
-            this.props.onDeleteNote(noteId)
+            this.context.deleteNote(noteId) //this one updates state
+            this.props.onDeleteNote(noteId) //this is passed when <Note /> is called from notePage, goes back to main page
         })
         .catch(error => {
             console.error({ error })
@@ -40,10 +39,11 @@ export default class Note extends Component  {
     }
 
     render() {
+        const modified = parseISO(this.props.modDate)//How do I fix the date?
         return(
             <div className='note'>
                     <Link to={`/note/${this.props.id}`}><h3>{this.props.name}</h3></Link>
-                    <span>{this.props.modDate}</span>
+                    <span>{format(modified, 'do MMM yyyy')}</span>
                     <button onClick={this.handleClickDelete}>Delete Note</button>
             </div>
         )

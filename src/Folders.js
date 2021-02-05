@@ -10,9 +10,9 @@ export default class Folders extends Component {
         match: {
           params: {}
         }
-      }//Discuss with Mentor
+      }
 
-    static contextType = DataContext;
+    static contextType = DataContext;//Does This Have to be Context Type?
 
     render() {
         const { folders } = this.context  
