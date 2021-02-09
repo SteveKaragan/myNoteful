@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css'
-import Notes from './Notes'
-import Folders from './Folders'
-import NotePage from './notePage'
-import Folder from './Folder'
-import DataContext from './dataContext'
-import AddFolder from './AddFolder'
-import AddNote from './AddNote'
-import SectionError from './sectionError'
+import Notes from '../Notes/Notes'
+import Folders from '../Folders/Folders'
+import NotePage from '../NotePage/notePage'
+import Folder from '../Folder/Folder'
+import DataContext from '../dataContext'
+import AddFolder from '../AddFolder/AddFolder'
+import AddNote from '../AddNote/AddNote'
+import SectionError from '../sectionError'
 
 
 class App extends Component {

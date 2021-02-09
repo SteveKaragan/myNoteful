@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import DataContext from './dataContext'
+import DataContext from '../dataContext'
 import './Folders.css'
 
 

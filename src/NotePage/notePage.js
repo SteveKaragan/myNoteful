@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './notePage.css'
-import DataContext from './dataContext'
-import Note from './Note'
+import DataContext from '../dataContext'
+import Note from '../Note/Note'
 
 
 

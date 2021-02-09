@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataContext from './dataContext'
+import DataContext from '../dataContext'
 import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
 import PropTypes from 'prop-types';
@@ -40,11 +40,11 @@ export default class Note extends Component  {
     }
 
     render() {
-        const modified = parseISO(this.props.modDate)//How do I fix the date?
+        const mod = parseISO(this.props.modDate)//How do I fix the date?
         return(
             <div className='note'>
                     <Link to={`/note/${this.props.id}`}><h3>{this.props.name}</h3></Link>
-                    <span>{format(modified, 'do MMM yyyy')}</span>
+                    <span>Modified {format(mod, 'do MMM yyyy')}</span>
                     <button onClick={this.handleClickDelete}>Delete Note</button>
             </div>
         )

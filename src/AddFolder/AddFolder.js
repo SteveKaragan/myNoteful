@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DataContext from './dataContext'
+import DataContext from '../dataContext'
 
 
 

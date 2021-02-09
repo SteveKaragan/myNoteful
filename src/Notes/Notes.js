@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Note from './Note'
-import DataContext from './dataContext'
+import Note from '../Note/Note'
+import DataContext from '../dataContext'
 import { NavLink } from 'react-router-dom'
 import './Notes.css'
 
