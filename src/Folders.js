@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import DataContext from './dataContext'
 import './Folders.css'
@@ -26,7 +26,7 @@ export default class Folders extends Component {
         return(
             <div>
                 <ul>{lis}</ul>
-                <button className='addFolder'>Add Folder</button>
+                <NavLink to={'/add-folder'}className='addFolder' >Add Folder</NavLink>
             </div>
         )
     }        

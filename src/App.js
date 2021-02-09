@@ -6,6 +6,9 @@ import Folders from './Folders'
 import NotePage from './notePage'
 import Folder from './Folder'
 import DataContext from './dataContext'
+import AddFolder from './AddFolder'
+import AddNote from './AddNote'
+import SectionError from './sectionError'
 
 
 class App extends Component {
@@ -19,6 +22,18 @@ class App extends Component {
         notes: this.state.notes.filter(note => note.id !== noteId)
     });
   };
+
+  handleAddFolder = folder => {
+    this.setState({
+      folders: [...this.state.folders, folder]
+    })
+  }
+
+  handleAddNote = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
+  }
   
   componentDidMount() {
     Promise.all(
@@ -44,7 +59,9 @@ class App extends Component {
     const contextValue = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote
     }
     return (
       <div className='App'>
@@ -55,16 +72,24 @@ class App extends Component {
             </Link>
           </header>
           <section className='container'>
-            <nav className='nav'>
-              <Route exact path='/' component={Folders}/>
-              <Route path='/folder/:folderId' component={Folders}/>
-              <Route path='/note/:noteId' component={Folder}/>
-            </nav>
-            <main className='main'>
-              <Route exact path='/' component={Notes}/>
-              <Route path='/folder/:folderId' component={Notes}/>
-              <Route path='/note/:noteId' component={NotePage}/>
-            </main>
+            <SectionError>
+              <nav className='nav'>
+                <Route exact path='/' component={Folders}/>
+                <Route path='/folder/:folderId' component={Folders}/>
+                <Route path='/note/:noteId' component={Folder}/>
+                <Route path='/add-folder' component={Folder}/>
+                <Route path='/add-note' component={Folder}/>
+              </nav>
+            </SectionError>
+            <SectionError>
+              <main className='main'>
+                <Route exact path='/' component={Notes}/>
+                <Route path='/folder/:folderId' component={Notes}/>
+                <Route path='/note/:noteId' component={NotePage}/>
+                <Route path='/add-folder' component={AddFolder}/>
+                <Route path='/add-note' component={AddNote}/>
+              </main>
+            </SectionError>
           </section>
         </DataContext.Provider>
       </div>

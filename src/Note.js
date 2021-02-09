@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DataContext from './dataContext'
 import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
+import PropTypes from 'prop-types';
 import './Note.css'
 
 
@@ -50,3 +51,14 @@ export default class Note extends Component  {
     }
 }
 
+Note.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    modDate: PropTypes.string.isRequired,
+    folder: PropTypes.string
+  };
+
+                    // id={note.id}
+                    // name={note.name}
+                    // modDate={note.modified}
+                    // folder={note.folderId}

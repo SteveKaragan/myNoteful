@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Note from './Note'
 import DataContext from './dataContext'
+import { NavLink } from 'react-router-dom'
 import './Notes.css'
 
 
@@ -34,7 +35,7 @@ export default class Notes extends Component {
                 <ul>
                     {lis}
                 </ul>
-                <button>Add Note</button>
+                <NavLink to={'/add-note'}className='addFolder' >Add Note</NavLink>
             </div>
         )
     }

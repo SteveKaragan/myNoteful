@@ -4,6 +4,8 @@ const DataContext = React.createContext({
   notes: [],
   folders: [],
   deleteNote: () => {},
+  addFolder: () => {},
+  addNote: () => {},
 })
 
 export default DataContext
