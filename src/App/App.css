@@ -9,22 +9,42 @@ body {
 }
 
 header {
-    text-align: center
+    background-color: #0b1f3a;
+    color: #bdbdbd;
+    text-align: center;
+    padding-left: 16px;
+    padding-top: 32px;
+    padding-bottom: 10px;
+    text-shadow: 2px 1px 2px black;
 }
 
+ header a {
+    color: #bdbdbd;
+  }
+
+ header a:hover {
+    color: #FFB72F;
+  }
+
 .container {
-    display: flex
+    display: flex;
+    background-color: #0b1f3a;
   }
 
 .nav {
     flex: 1;
-    padding-left: 200px; 
+    padding-left: 200px;
+    background-color: #0b1b32;
+    color: #fff; 
 
 }
 
 .main {
     flex: 3;
     padding-left: 50px;
+    background-color: #102541;
+    height: calc(100vh - 120px);
+    overflow: auto;
 }
 
 a {
@@ -33,11 +53,4 @@ a {
 
 ul {
     list-style-type: none;
-}
-
-button {
-    background-color: white;
-    border: 1px solid black;
-    width: 100px;
-    height: 30px;
 }

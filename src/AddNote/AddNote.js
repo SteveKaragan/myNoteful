@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DataContext from '../dataContext'
+import './AddNote.css'
 
 
 
@@ -47,7 +48,7 @@ export default class AddNote extends Component {
     render() {
         const { folders } = this.context
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className='Noteful-form'>
                 <h3>Create a Note</h3>
                 <label htmlFor="note-name-input">Name</label>
                 <input type="text" className="registration__control"
@@ -60,7 +61,7 @@ export default class AddNote extends Component {
                 <label htmlFor='note-folder-select'>
                     Folder
                 </label>
-                <select id='note-folder-select' name='note-folder-id'>
+                <select id='note-folder-select' name='note-folder-id' >
                     <option value={null}>...</option>
                     {folders.map(folder =>
                     <option key={folder.id} value={folder.id}>

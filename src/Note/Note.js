@@ -31,8 +31,8 @@ export default class Note extends Component  {
             return res.json()//we don't do anything with this, right?
         })
         .then(() => {
-            this.context.deleteNote(noteId) //this one updates state
-            this.props.onDeleteNote(noteId) //this is passed when <Note /> is called from notePage, goes back to main page
+            this.context.deleteNote(noteId)
+            this.props.onDeleteNote(noteId)
         })
         .catch(error => {
             console.error({ error })
@@ -40,12 +40,18 @@ export default class Note extends Component  {
     }
 
     render() {
-        const mod = parseISO(this.props.modDate)//How do I fix the date?
+        const mod = parseISO(this.props.modDate)
         return(
             <div className='note'>
-                    <Link to={`/note/${this.props.id}`}><h3>{this.props.name}</h3></Link>
-                    <span>Modified {format(mod, 'do MMM yyyy')}</span>
-                    <button onClick={this.handleClickDelete}>Delete Note</button>
+                <h3 className='Note__title'><Link to={`/note/${this.props.id}`}>{this.props.name}</Link></h3>
+                    <button className='Note__delete'type='button' onClick={this.handleClickDelete}>
+                        {' '}
+                        remove
+                    </button>
+                    <div className='Note__dates'>
+                        <span>Modified {format(mod, 'do MMM yyyy')}</span>
+                    </div>
+                        
             </div>
         )
     }
@@ -57,8 +63,3 @@ Note.propTypes = {
     modDate: PropTypes.string.isRequired,
     folder: PropTypes.string
   };
-
-                    // id={note.id}
-                    // name={note.name}
-                    // modDate={note.modified}
-                    // folder={note.folderId}

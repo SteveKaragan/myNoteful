@@ -25,7 +25,7 @@ export default class NotePage extends Component {
             <div className='pageNote'>
                 <div className='noteBox'>
                     {
-                        note.content === '' ? '' : 
+                        note.content === '' ? '' : //do I need to do something different here?
                         <Note 
                             id={note.id}
                             name={note.name}
@@ -34,7 +34,7 @@ export default class NotePage extends Component {
                         />
                     }
                 </div>
-                <p>{note.content}</p>
+                <p className='content'>{note.content}</p>
             </div>
         )
     }

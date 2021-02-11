@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DataContext from '../dataContext'
+import './AddFolder.css'
 
 
 
@@ -45,13 +46,13 @@ export default class AddFolder extends Component {
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className='Noteful-form' onSubmit={this.handleSubmit}>
                 <h3>Create a Folder</h3>
                 <label htmlFor="folder-name-input">Name</label>
                 <input type="text" className="registration__control"
                 name="folder-name" id="folder-name-input"/>
                 <br/>
-                <button type="submit" className="registration__button">
+                <button type="submit">
                     Add Folder
                 </button>
             </form>

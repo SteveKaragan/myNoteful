@@ -31,11 +31,13 @@ export default class Notes extends Component {
             </li>
             )
         return(
-            <div>
+            <div className='NoteListMain'>
                 <ul>
                     {lis}
                 </ul>
-                <NavLink to={'/add-note'}className='addFolder' >Add Note</NavLink>
+                <div>
+                    <NavLink to={'/add-note'} className='NavCircleButton'>Add Note</NavLink>
+                </div>
             </div>
         )
     }

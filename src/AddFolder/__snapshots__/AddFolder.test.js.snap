@@ -2,6 +2,7 @@
 
 exports[`AddFolderForm component renders the complete form 1`] = `
 <form
+  className="Noteful-form"
   onSubmit={[Function]}
 >
   <h3>
@@ -20,7 +21,6 @@ exports[`AddFolderForm component renders the complete form 1`] = `
   />
   <br />
   <button
-    className="registration__button"
     type="submit"
   >
     Add Folder

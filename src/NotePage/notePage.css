@@ -1,3 +1,9 @@
+
 .pageNote {
+    margin-top: 10px;
     width: 50%;
+}
+
+.content {
+    color: white;
 }
