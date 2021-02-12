@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DataContext from '../dataContext'
+import DataContext from '../dataContext';
+import PropTypes from 'prop-types';
 import './AddNote.css'
 
 
@@ -52,7 +53,7 @@ export default class AddNote extends Component {
                 <h3>Create a Note</h3>
                 <label htmlFor="note-name-input">Name</label>
                 <input type="text" className="registration__control"
-                name="note-name" id="note-name-input"/>
+                name="note-name" id="note-name-input" required/>
                 <br/>
                 <label htmlFor="note-content-input">Content</label>
                 <input type="text" className="registration__control"
@@ -78,3 +79,7 @@ export default class AddNote extends Component {
     }
 
 }
+
+AddNote.propTypes = {
+  history: PropTypes.objectOf(PropTypes.func),
+};

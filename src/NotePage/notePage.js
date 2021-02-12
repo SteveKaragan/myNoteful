@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import './notePage.css'
-import DataContext from '../dataContext'
-import Note from '../Note/Note'
+import './notePage.css';
+import DataContext from '../dataContext';
+import PropTypes from 'prop-types';
+import Note from '../Note/Note';
 
 
 
@@ -19,13 +20,13 @@ export default class NotePage extends Component {
 
     render() {
         const noteId = this.props.match.params.noteId
-        const { notes=[] } = this.context //the =[] is if no notes returned?
-        const note = notes.find(note => note.id === noteId) || { content: ''} //the || is incase nothing returned?
+        const { notes=[] } = this.context 
+        const note = notes.find(note => note.id === noteId) || { content: ''}
         return(
             <div className='pageNote'>
                 <div className='noteBox'>
                     {
-                        note.content === '' ? '' : //do I need to do something different here?
+                        note.content === '' ? '' : 
                         <Note 
                             id={note.id}
                             name={note.name}
@@ -39,3 +40,12 @@ export default class NotePage extends Component {
         )
     }
 }
+
+NotePage.propTypes = {
+    history: PropTypes.objectOf(PropTypes.func),
+    match: PropTypes.objectOf(PropTypes.shape({
+      params: PropTypes.objectOf(PropTypes.shape({
+        noteId: PropTypes.string.isRequired
+      }))
+    })),
+};

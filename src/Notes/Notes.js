@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Note from '../Note/Note'
-import DataContext from '../dataContext'
-import { NavLink } from 'react-router-dom'
-import './Notes.css'
+import Note from '../Note/Note';
+import DataContext from '../dataContext';
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './Notes.css';
 
 
 export default class Notes extends Component {
@@ -11,6 +12,7 @@ export default class Notes extends Component {
           params: {}
         }
       }
+
     static contextType = DataContext;
   
     render() {
@@ -42,3 +44,12 @@ export default class Notes extends Component {
         )
     }
 }
+
+Notes.propTypes = {
+    match: PropTypes.objectOf(PropTypes.shape({  
+      params: PropTypes.objectOf(PropTypes.shape({
+          folderId: PropTypes.string.isRequired
+        }))
+      })),
+  };
+  

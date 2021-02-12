@@ -71,26 +71,24 @@ class App extends Component {
               <h1>Noteful</h1>
             </Link>
           </header>
-          <section className='container'>
-            <SectionError>
-              <nav className='nav'>
-                <Route exact path='/' component={Folders}/>
-                <Route path='/folder/:folderId' component={Folders}/>
-                <Route path='/note/:noteId' component={Folder}/>
-                <Route path='/add-folder' component={Folder}/>
-                <Route path='/add-note' component={Folder}/>
-              </nav>
-            </SectionError>
-            <SectionError>
-              <main className='main'>
-                <Route exact path='/' component={Notes}/>
-                <Route path='/folder/:folderId' component={Notes}/>
-                <Route path='/note/:noteId' component={NotePage}/>
-                <Route path='/add-folder' component={AddFolder}/>
-                <Route path='/add-note' component={AddNote}/>
-              </main>
-            </SectionError>
-          </section>
+          <SectionError>
+            <section className='container'>
+                <nav className='nav'>
+                  <Route exact path='/' component={Folders}/>
+                  <Route path='/folder/:folderId' component={Folders}/>
+                  <Route path='/note/:noteId' component={Folder}/>
+                  <Route path='/add-folder' component={Folder}/>
+                  <Route path='/add-note' component={Folder}/>
+                </nav>
+                <main className='main'>
+                  <Route exact path='/' component={Notes}/>
+                  <Route path='/folder/:folderId' component={Notes}/>
+                  <Route path='/note/:noteId' component={NotePage}/>
+                  <Route path='/add-folder' component={AddFolder}/>
+                  <Route path='/add-note' component={AddNote}/>
+                </main>
+            </section>
+          </SectionError>
         </DataContext.Provider>
       </div>
     );

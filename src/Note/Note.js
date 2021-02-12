@@ -16,7 +16,7 @@ export default class Note extends Component  {
       static contextType = DataContext;
     
     handleClickDelete = (e) => {
-        e.preventDefault()//Do I need to prevent default?  Not a submit.
+        e.preventDefault()
         const noteId = this.props.id
         
         fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -28,7 +28,7 @@ export default class Note extends Component  {
         .then(res => {
             if (!res.ok)
             return res.json().then(e => Promise.reject(e))
-            return res.json()//we don't do anything with this, right?
+            return res.json()
         })
         .then(() => {
             this.context.deleteNote(noteId)
@@ -61,5 +61,8 @@ Note.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     modDate: PropTypes.string.isRequired,
-    folder: PropTypes.string
+    folder: PropTypes.string,
+    onDeleteNote: PropTypes.func.isRequired
   };
+
+

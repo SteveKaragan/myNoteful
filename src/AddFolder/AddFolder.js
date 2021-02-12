@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DataContext from '../dataContext'
+import DataContext from '../dataContext';
+import PropTypes from 'prop-types';
 import './AddFolder.css'
 
 
@@ -18,7 +19,7 @@ export default class AddFolder extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const note = {
-            name: e.target['folder-name'].value//how does folder-name work
+            name: e.target['folder-name'].value
           }
         fetch(`http://localhost:9090/folders/`, {
             method: 'POST',
@@ -50,7 +51,7 @@ export default class AddFolder extends Component {
                 <h3>Create a Folder</h3>
                 <label htmlFor="folder-name-input">Name</label>
                 <input type="text" className="registration__control"
-                name="folder-name" id="folder-name-input"/>
+                name="folder-name" id="folder-name-input" required/>
                 <br/>
                 <button type="submit">
                     Add Folder
@@ -60,3 +61,9 @@ export default class AddFolder extends Component {
     }
 
 }
+
+AddFolder.propTypes = {
+  history: PropTypes.objectOf(PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  })),
+};

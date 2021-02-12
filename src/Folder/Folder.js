@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import DataContext from '../dataContext'
+import DataContext from '../dataContext';
+import PropTypes from 'prop-types';
 
 
 export default class Folder extends Component {
     static defaultProps = {
         history: {
           goBack: () => { }
-        },//discuss with mentor
+        },
         match: {
           params: {}
         }
@@ -14,7 +15,7 @@ export default class Folder extends Component {
       static contextType = DataContext
     render() { 
         const { notes, folders } = this.context
-        const noteId = this.props.match.params.noteId;//need to understand this better
+        const noteId = this.props.match.params.noteId;
         const note = notes.find(note => note.id === noteId) || {}
         const folder = folders.find(folder => folder.id===note.folderId)
         return(
@@ -25,3 +26,13 @@ export default class Folder extends Component {
         )
     }
 }
+
+Folder.propTypes = {
+  history: PropTypes.objectOf(PropTypes.func),
+  match: PropTypes.objectOf(PropTypes.shape({
+    params: PropTypes.objectOf(PropTypes.shape({
+      noteId: PropTypes.string.isRequired
+    }))
+  })),
+};
+

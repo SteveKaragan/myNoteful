@@ -12,7 +12,7 @@ export default class Folders extends Component {
         }
       }
 
-    static contextType = DataContext;//Does This Have to be Context Type?
+    static contextType = DataContext;
 
     render() {
         const { folders, notes } = this.context
