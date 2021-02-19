@@ -28,11 +28,12 @@ export default class Folder extends Component {
 }
 
 Folder.propTypes = {
-  history: PropTypes.objectOf(PropTypes.func),
-  match: PropTypes.objectOf(PropTypes.shape({
-    params: PropTypes.objectOf(PropTypes.shape({
-      noteId: PropTypes.string.isRequired
-    }))
-  })),
-};
-
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired
+  }),
+  match: PropTypes.shape({  
+    params: PropTypes.shape({
+    noteId: PropTypes.string
+    })
+  })
+}

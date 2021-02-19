@@ -77,9 +77,10 @@ export default class AddNote extends Component {
             </form>
         )
     }
-
 }
 
 AddNote.propTypes = {
-  history: PropTypes.objectOf(PropTypes.func),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
 };

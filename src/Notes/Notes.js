@@ -46,10 +46,14 @@ export default class Notes extends Component {
 }
 
 Notes.propTypes = {
-    match: PropTypes.objectOf(PropTypes.shape({  
-      params: PropTypes.objectOf(PropTypes.shape({
-          folderId: PropTypes.string.isRequired
-        }))
-      })),
+    match: PropTypes.shape({  
+        params: PropTypes.shape({
+          folderId: PropTypes.string
+        })
+      }),
   };
+
+    
+
+    
   

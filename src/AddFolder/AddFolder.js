@@ -3,10 +3,6 @@ import DataContext from '../dataContext';
 import PropTypes from 'prop-types';
 import './AddFolder.css'
 
-
-
-
-
 export default class AddFolder extends Component {
     static defaultProps = {
         history: {
@@ -59,11 +55,10 @@ export default class AddFolder extends Component {
             </form>
         )
     }
-
 }
 
 AddFolder.propTypes = {
-  history: PropTypes.objectOf(PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  })),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
 };
