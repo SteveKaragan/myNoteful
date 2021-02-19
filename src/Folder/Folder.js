@@ -21,7 +21,7 @@ export default class Folder extends Component {
         return(
             <div>
                 <button onClick={() => this.props.history.goBack()} className='NavCircleButton'>back</button>
-                {(folder) && <h3 className='folder'>{folder.name}</h3>}
+                {(folder) && <h2 className='folder'>{folder.name}</h2>}
             </div>
         )
     }

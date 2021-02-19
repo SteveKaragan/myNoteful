@@ -50,7 +50,7 @@ export default class AddNote extends Component {
         const { folders } = this.context
         return(
             <form onSubmit={this.handleSubmit} className='Noteful-form'>
-                <h3>Create a Note</h3>
+                <h2>Create a Note</h2>
                 <label htmlFor="note-name-input">Name</label>
                 <input type="text" className="registration__control"
                 name="note-name" id="note-name-input" required/>

@@ -43,7 +43,7 @@ export default class Note extends Component  {
         const mod = parseISO(this.props.modDate)
         return(
             <div className='note'>
-                <h3 className='Note__title'><Link to={`/note/${this.props.id}`}>{this.props.name}</Link></h3>
+                <h2 className='Note__title'><Link to={`/note/${this.props.id}`}>{this.props.name}</Link></h2>
                     <button className='Note__delete'type='button' onClick={this.handleClickDelete}>
                         {' '}
                         remove

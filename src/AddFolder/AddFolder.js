@@ -44,7 +44,7 @@ export default class AddFolder extends Component {
     render() {
         return(
             <form className='Noteful-form' onSubmit={this.handleSubmit}>
-                <h3>Create a Folder</h3>
+                <h2>Create a Folder</h2>
                 <label htmlFor="folder-name-input">Name</label>
                 <input type="text" className="registration__control"
                 name="folder-name" id="folder-name-input" required/>
