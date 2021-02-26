@@ -6,11 +6,6 @@ import './Folders.css'
 
 
 export default class Folders extends Component {
-    static defaultProps = {
-        match: {
-          params: {}
-        }
-      }
 
     static contextType = DataContext;
 

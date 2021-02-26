@@ -61,7 +61,6 @@ Note.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     modDate: PropTypes.string.isRequired,
-    folder: PropTypes.string,
     onDeleteNote: PropTypes.func.isRequired
   };
 

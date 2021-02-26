@@ -27,7 +27,7 @@ export default class AddFolder extends Component {
         .then(res => {
             if (!res.ok) {
               return res.json().then(error => {
-                throw error
+                throw error 
               })
             }
             return res.json()
@@ -37,7 +37,7 @@ export default class AddFolder extends Component {
             this.props.history.push(`/folder/${folder.id}`)
           })
           .catch(error => {
-            console.error({ error })
+            throw new Error(error)
           })    
     }
 

@@ -9,6 +9,7 @@ export default class SectionError extends Component {
     }
 
     static getDerivedStateFromError(error) {
+        console.log('check')
         return { haserror: true };
     }
 
