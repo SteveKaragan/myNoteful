@@ -17,7 +17,7 @@ export default class AddFolder extends Component {
         const note = {
             name: e.target['folder-name'].value
           }
-        fetch(`http://localhost:9090/folders/`, {
+        fetch(`http://localhost:8000/folders/`, {
             method: 'POST',
             body: JSON.stringify(note),
             headers: {

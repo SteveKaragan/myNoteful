@@ -19,7 +19,7 @@ class App extends Component {
   
   handleDeleteNote = noteId => {
     this.setState({
-        notes: this.state.notes.filter(note => note.id !== noteId)
+        notes: this.state.notes.filter(note => note.id !== Number(noteId))
     });
   };
 
@@ -37,7 +37,7 @@ class App extends Component {
   
   componentDidMount() {
     Promise.all(
-      [fetch('http://localhost:9090/notes'), fetch('http://localhost:9090/folders')]
+      [fetch('http://localhost:8000/notes'), fetch('http://localhost:8000/folders')]
     )
       .then(([notesData, foldersData]) => {
         if (!notesData.ok)

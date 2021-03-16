@@ -19,10 +19,9 @@ export default class AddNote extends Component {
         const newNote = {
             name: e.target['note-name'].value,
             content: e.target['note-content'].value,
-            folderId: e.target['note-folder-id'].value,
-            modified: new Date(),
+            folder_id: Number(e.target['note-folder-id'].value),
           }
-        fetch(`http://localhost:9090/notes/`, {
+        fetch(`http://localhost:8000/notes/`, {
             method: 'POST',
             body: JSON.stringify(newNote),
             headers: {
@@ -65,7 +64,7 @@ export default class AddNote extends Component {
                 <select id='note-folder-select' name='note-folder-id' >
                     <option value={null}>...</option>
                     {folders.map(folder =>
-                    <option key={folder.id} value={folder.id}>
+                    <option key={folder.folder_id} value={folder.folder_id}>
                         {folder.name}
                     </option>
                     )}

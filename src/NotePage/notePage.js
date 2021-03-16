@@ -21,7 +21,7 @@ export default class NotePage extends Component {
     render() {
         const noteId = this.props.match.params.noteId
         const { notes=[] } = this.context 
-        const note = notes.find(note => note.id === noteId) || { content: ''}
+        const note = notes.find(note => note.id === Number(noteId)) || { content: ''}
         return(
             <div className='pageNote'>
                 <div className='noteBox'>

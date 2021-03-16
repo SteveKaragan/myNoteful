@@ -16,8 +16,8 @@ export default class Folder extends Component {
     render() { 
         const { notes, folders } = this.context
         const noteId = this.props.match.params.noteId;
-        const note = notes.find(note => note.id === noteId) || {}
-        const folder = folders.find(folder => folder.id===note.folderId)
+        const note = notes.find(note => note.id === Number(noteId)) || {}
+        const folder = folders.find(folder => folder.folder_id===note.folder_id)
         return(
             <div>
                 <button onClick={() => this.props.history.goBack()} className='NavCircleButton'>back</button>

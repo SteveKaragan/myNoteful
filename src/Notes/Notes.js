@@ -21,7 +21,7 @@ export default class Notes extends Component {
         let folderNotes
         (!folderId) 
             ? folderNotes = notes
-            : folderNotes = notes.filter(note => note.folderId === folderId)
+            : folderNotes = notes.filter(note => note.folder_id === Number(folderId))
         const lis =  folderNotes.map(note => 
             <li key={note.id}>
                 <Note 
