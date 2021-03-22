@@ -9,6 +9,7 @@ import DataContext from '../dataContext'
 import AddFolder from '../AddFolder/AddFolder'
 import AddNote from '../AddNote/AddNote'
 import SectionError from '../sectionError'
+import { API_URL } from '../config'
 
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
   
   componentDidMount() {
     Promise.all(
-      [fetch('http://localhost:8000/notes'), fetch('http://localhost:8000/folders')]
+      [fetch(`${API_URL}/notes`), fetch(`${API_URL}/folders`)]
     )
       .then(([notesData, foldersData]) => {
         if (!notesData.ok)

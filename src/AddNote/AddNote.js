@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DataContext from '../dataContext';
 import PropTypes from 'prop-types';
 import './AddNote.css'
+import { API_URL } from '../config'
 
 
 
@@ -21,7 +22,7 @@ export default class AddNote extends Component {
             content: e.target['note-content'].value,
             folder_id: Number(e.target['note-folder-id'].value),
           }
-        fetch(`http://localhost:8000/notes/`, {
+        fetch(`${API_URL}/notes`, {
             method: 'POST',
             body: JSON.stringify(newNote),
             headers: {

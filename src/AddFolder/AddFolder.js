@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DataContext from '../dataContext';
 import PropTypes from 'prop-types';
 import './AddFolder.css'
+import { API_URL } from '../config'
 
 export default class AddFolder extends Component {
     static defaultProps = {
@@ -17,7 +18,7 @@ export default class AddFolder extends Component {
         const note = {
             name: e.target['folder-name'].value
           }
-        fetch(`http://localhost:8000/folders/`, {
+        fetch(`${API_URL}/folders`, {
             method: 'POST',
             body: JSON.stringify(note),
             headers: {

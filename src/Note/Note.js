@@ -3,7 +3,8 @@ import DataContext from '../dataContext'
 import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
 import PropTypes from 'prop-types';
-import './Note.css'
+import './Note.css';
+import { API_URL } from '../config';
 
 
 
@@ -19,7 +20,7 @@ export default class Note extends Component  {
         e.preventDefault()
         const noteId = this.props.id
         
-        fetch(`http://localhost:8000/notes/${noteId}`, {
+        fetch(`${API_URL}/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
               'content-type': 'application/json'
